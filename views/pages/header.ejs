@@ -5,3 +5,14 @@
 	<meta charset="utf-8">
 </head>
 <body>
+	<div class="main container">
+		<% if (locals.flash && locals.flash.error ) { %>
+			<div class="negative message">
+				<h1><%= flash.error %></h1>
+			</div>
+		<% } %>		
+		<% if (locals.flash && locals.flash.success ) { %>
+			<div class="positive message">
+				<h1><%= flash.success %></h1>
+			</div>
+		<% } %>	
