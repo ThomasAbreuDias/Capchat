@@ -1,16 +1,14 @@
 <%- include('header') %>
 
-	<div>
-		<h1>C'est ma page d'acceuil ! petit </h1>
-	</div>
-	<form action="/" method="post">
-		<div class="field">
-			<label>Titre Capcha :</label><br>
-			<input type="text" name="Titre_capchat">
+	<div class="presentation">
+		<h1>Bienvenue à toi fan de Rage against the machine !</h1>
+		<div class="desc">
+			<p>Si tu en as marre de demander à tes utilisateurs de clicker sur des passages piéton, choisis Capchat !</p>
+			<p>Après incription, tu pourras crée ton propre thèmes de dectection de robot.</p>
 		</div>
-		<button type="submit">
-			Go
-		</button>
-	</form>
-
+		<h2><a href="#">S'inscrire ?</a></h2>
+	</div>
+	
+	<%- include('form') %>
+	
 <%- include('footer') %>

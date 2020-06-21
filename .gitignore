@@ -1,6 +1,8 @@
 
 # Utilities
 *.sh
+uploads/
+public/
 
 # Logs
 logs
