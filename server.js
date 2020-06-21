@@ -63,7 +63,7 @@ app.post('/upload',
     if (!folderCreationResult) 
       return res.json({ok: false, msg: "The uploads folder couldn't be created"});
   
-    form.parse(req, (err, fields, files) => {
+    form.parse(req, (err, fields, files) => {/*fields est un capcat {obj}*/
       if(fields.titre === undefined || fields.titre === '') {
         req.flash("error","Vous n'avez donné aucun titre !");
         res.redirect('/');
@@ -71,7 +71,7 @@ app.post('/upload',
         req.flash("error","Vous n'avez donné aucun thème !");
         res.redirect('/');
       } else {
-        let capchat = require("./models/capchat");
+        var capchat = require("./models/capchat");
           capchat.create(fields, function () { 
           req.flash("success", "Merci pour votre participation !");
         });
@@ -82,10 +82,14 @@ app.post('/upload',
           Object.keys(files).forEach((key) => {//permet de renomer tous les fichier uploadés pour ajouter le
             let file = files[key];
             if(files.neutres.size != 0 && files.singuliers.size != 0){
-              renameZip(file, join(uploadsFolder,file.name));
+              let np =join(uploadsFolder,file.name);
+              renameZip(file, np);
+              file.path = np;
             }
           });
+          let im = require("./models/imgManager");
 
+          im.setAssets(fields, files);
           res.json({ fields, files });
         }
       }

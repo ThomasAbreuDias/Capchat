@@ -3,6 +3,12 @@
 	<form action="/upload" enctype="multipart/form-data" method="post">
 		<%- include('form_text') %>
 		<%- include('form_upload') %><br>
-		<button type="submit" >Je créer mon théme !</button>
+		<button type="submit" onclick="check()">Je créer mon théme !</button>
 	</form>
 </div>
+<script type="text/javascript">
+	function check(){
+		document.getElementById("titre").value = document.getElementById("titre").value.toLowerCase();
+		document.getElementById("theme").value = document.getElementById("theme").value.toLowerCase();
+	}
+</script>

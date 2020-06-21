@@ -26,6 +26,8 @@
     "mysql": "^2.18.1",
     "nodemon": "^2.0.4",
     "path": "^0.12.7",
+    "stream-transform": "^2.0.2",
+    "unzipper": "^0.10.11",
     "vue": "^2.6.11"
   }
 }

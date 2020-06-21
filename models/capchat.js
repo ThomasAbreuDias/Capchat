@@ -16,6 +16,7 @@ class Capchat {
 			);
 		}catch (err) {
 			console.log("Erreur d'insertion dans la table capchat!")
+			console.log(err);
 		}
 	}
 }
