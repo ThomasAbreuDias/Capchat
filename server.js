@@ -1,11 +1,12 @@
 //Modules require 
 let http = require('http');
 let express = require('express');
-let fs = require('fs');
 let bodyParser = require('body-parser');
 let session = require('express-session');
 let formidable = require('formidable');
 let { join } = require('path');
+let Promise = require("bluebird");
+let fs = Promise.promisifyAll(require("fs"));
 let app = express();
 
 //moteur template
@@ -32,14 +33,14 @@ app.get('/',
     res.render('pages/index');
   }
   );
-function checkCreateUploadsFolder (uploadsFolder) {
+async function checkCreateUploadsFolder (uploadsFolder) {
   try {
-    fs.statSync(uploadsFolder)
+    await fs.statAsync(uploadsFolder)
   } catch (e) {
     if (e && e.code == 'ENOENT') {
       console.log('The uploads folder doesn\'t exist, creating a new one...')
       try {
-        fs.mkdirSync(uploadsFolder)
+        await fs.mkdirAsync(uploadsFolder)
       } catch (err) {
         console.log('Error creating the uploads folder 1')
         return false
